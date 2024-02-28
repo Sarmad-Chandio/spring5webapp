@@ -49,9 +49,12 @@ public class BootstrapData implements CommandLineRunner {
 
         Author savedAuthorKafka=authorRepository.save(kafka);
         Book savedBookMetamorphosis=bookRepository.save(metamorphosis);
-
+        //Author to the book
         savedAuthorCamus.getBooks().add(savedBookStranger);
         savedAuthorKafka.getBooks().add(savedBookMetamorphosis);
+        // Book to the author
+        savedBookStranger.getAuthors().add(savedAuthorCamus);
+        savedBookMetamorphosis.getAuthors().add(savedAuthorKafka);
 
         //The Metamorphosis , publisher
         Publisher publisherMetamorphosis=new Publisher();
